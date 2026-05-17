@@ -29,7 +29,7 @@ cat execution_results.json  # or execution_results.md
 
 ### Core Components
 
-#### 1. **01_mcp_server_production.py** (FastAPI MCP Server)
+#### 1. **mcp_server_production.py** (FastAPI MCP Server)
 - ✅ Schema validation (Pydantic)
 - ✅ Safe tool execution wrapper
 - ✅ Retry logic with exponential backoff
@@ -52,7 +52,7 @@ cat execution_results.json  # or execution_results.md
 
 ---
 
-#### 2. **02_mcp_client_production.py** (MCP Client)
+#### 2. **mcp_client_production.py** (MCP Client)
 - ✅ Dynamic tool discovery
 - ✅ Local schema caching
 - ✅ Preflight input validation
@@ -74,7 +74,7 @@ cat execution_results.json  # or execution_results.md
 
 ---
 
-#### 3. **03_agent_execution_loop.py** (Explicit Agent Loop)
+#### 3. **agent_execution_loop.py** (Explicit Agent Loop)
 - ✅ Agents as execution loops (not one-shot calls)
 - ✅ Explicit state management
 - ✅ Step-by-step execution
@@ -98,7 +98,7 @@ state = loop.run_pipeline(steps)
 
 ---
 
-#### 4. **04_crewai_multi_agent_production.py** (Multi-Agent System)
+#### 4. **crewai_multi_agent_production.py** (Multi-Agent System)
 - ✅ Specialized agents with clear roles
 - ✅ Tool wrappers for safety
 - ✅ Agent metrics collection
@@ -119,7 +119,7 @@ state = loop.run_pipeline(steps)
 
 ---
 
-#### 5. **05_main_orchestration.py** (Main Entry Point)
+#### 5. **main_orchestration.py** (Main Entry Point)
 - ✅ 4-phase execution pipeline
 - ✅ Results aggregation
 - ✅ Multiple output formats (JSON, Markdown)
@@ -146,7 +146,7 @@ python 05_main_orchestration.py \
 
 ---
 
-#### 6. **06_testing_validation_suite.py** (Test Suite)
+#### 6. **testing_validation_suite.py** (Test Suite)
 - ✅ MCP server tests
 - ✅ Schema validation tests
 - ✅ Error handling tests
@@ -226,18 +226,18 @@ In-depth guide explaining:
 ```
 User Request
     ↓
-Main Orchestration (05_main_orchestration.py)
+Main Orchestration (main_orchestration.py)
     ├─→ Phase 1: Initialization
     │   └─ MCP Client Discovery & Connection
     │
-    ├─→ Phase 2: Execution Loop (03_agent_execution_loop.py)
+    ├─→ Phase 2: Execution Loop (agent_execution_loop.py)
     │   ├─ Setup
     │   ├─ Speech-to-Text
     │   ├─ Image Analysis
     │   ├─ Validation
     │   └─ Synthesis
     │
-    ├─→ Phase 3: CrewAI Multi-Agent (04_crewai_multi_agent_production.py)
+    ├─→ Phase 3: CrewAI Multi-Agent (crewai_multi_agent_production.py)
     │   ├─ Audio Agent
     │   ├─ Vision Agent
     │   ├─ Validation Agent
@@ -247,13 +247,13 @@ Main Orchestration (05_main_orchestration.py)
         └─ JSON/Markdown Output
 
 All phases use:
-- MCP Client (02_mcp_client_production.py)
+- MCP Client (mcp_client_production.py)
   ├─ Tool Discovery
   ├─ Schema Caching
   ├─ Input Validation
   └─ Safe Invocation
     ↓
-- MCP Server (01_mcp_server_production.py)
+- MCP Server (mcp_server_production.py)
   ├─ Tool Registry
   ├─ Execution
   ├─ Error Handling
@@ -542,16 +542,16 @@ MIT License - See LICENSE file
 ### Common Commands
 ```bash
 # Start server
-python 01_mcp_server_production.py
+python mcp_server_production.py
 
 # Run tests
-python 06_testing_validation_suite.py
+python testing_validation_suite.py
 
 # Execute pipeline
-python 05_main_orchestration.py --image inputs/earth.jpg --audio inputs/moon.wav
+python main_orchestration.py --image inputs/earth.jpg --audio inputs/moon.wav
 
 # Debug with verbose logging
-python 05_main_orchestration.py --log-level DEBUG
+python main_orchestration.py --log-level DEBUG
 
 # View metrics
 curl http://127.0.0.1:9000/stats | jq .
