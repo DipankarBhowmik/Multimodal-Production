@@ -13,11 +13,11 @@ mkdir -p inputs
 # Add your files: inputs/earth.jpg, inputs/moon.wav
 
 # 3. Terminal 1: Start MCP Server
-python 01_mcp_server_production.py
+python mcp_server_production.py
 # Output: Uvicorn running on http://127.0.0.1:9000
 
 # 4. Terminal 2: Run pipeline
-python 05_main_orchestration.py --image inputs/earth.jpg --audio inputs/moon.wav
+python main_orchestration.py --image inputs/earth.jpg --audio inputs/moon.wav
 
 # 5. Check results
 cat execution_results.json  # or execution_results.md
